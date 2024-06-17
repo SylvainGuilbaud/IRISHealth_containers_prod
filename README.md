@@ -23,36 +23,36 @@
 ## IRIS Management Portal
 
 With this pod, the user can access each instance's Management Portal immediately without relying on the private web server. If running on your local machine, use these URLs:
-* [IRIS EM Management Portal](http://localhost:58880/irishealth-latest-em/csp/sys/UtilHome.csp)
-* [IRIS CD Management Portal](http://localhost:58880/irishealth-latest-cd/csp/sys/UtilHome.csp)
-* [IRIS PREVIEW Management Portal](http://localhost:58880/irishealth-latest-preview/csp/sys/UtilHome.csp)
+* [IRIS EM Management Portal](http://localhost:58881/irishealth-latest-em/csp/sys/UtilHome.csp)
+* [IRIS CD Management Portal](http://localhost:58881/irishealth-latest-cd/csp/sys/UtilHome.csp)
+* [IRIS PREVIEW Management Portal](http://localhost:58881/irishealth-latest-preview/csp/sys/UtilHome.csp)
 
 ## Web Gateway Management 
-* [Web Gateway Management](http://localhost:58880/csp/bin/Systems/Module.cxw)
+* [Web Gateway Management](http://localhost:58881/csp/bin/Systems/Module.cxw)
 
 ## IRIS APIs
 
 With this pod, the user can access each instance's Management Portal immediately without relying on the private web server. If running on your local machine, use these URLs:
 ### API Atelier
-* [IRIS EM API Atelier](http://localhost:58880/irishealth-latest-em/api/atelier/)
-* [IRIS CD API Atelier](http://localhost:58880/irishealth-latest-cd/api/atelier/)
-* [IRIS PREVIEW API Atelier](http://localhost:58880/irishealth-latest-preview/api/atelier/)
+* [IRIS EM API Atelier](http://localhost:58881/irishealth-latest-em/api/atelier/)
+* [IRIS CD API Atelier](http://localhost:58881/irishealth-latest-cd/api/atelier/)
+* [IRIS PREVIEW API Atelier](http://localhost:58881/irishealth-latest-preview/api/atelier/)
 ### API Management
-* [IRIS EM API Management](http://localhost:58880/irishealth-latest-em/api/mgmnt/)
-* [IRIS CD API Management](http://localhost:58880/irishealth-latest-cd/api/mgmnt/)
-* [IRIS PREVIEW API Management](http://localhost:58880/irishealth-latest-preview/api/mgmnt/)
+* [IRIS EM API Management](http://localhost:58881/irishealth-latest-em/api/mgmnt/)
+* [IRIS CD API Management](http://localhost:58881/irishealth-latest-cd/api/mgmnt/)
+* [IRIS PREVIEW API Management](http://localhost:58881/irishealth-latest-preview/api/mgmnt/)
 ### IRIS Monitor Metrics
-* [IRIS EM METRICS](http://localhost:58880/irishealth-latest-em/api/monitor/metrics)
-* [IRIS CD METRICS](http://localhost:58880/irishealth-latest-cd/api/monitor/metrics)
-* [IRIS PREVIEW METRICS](http://localhost:58880/irishealth-latest-preview/api/monitor/metrics)
+* [IRIS EM METRICS](http://localhost:58881/irishealth-latest-em/api/monitor/metrics)
+* [IRIS CD METRICS](http://localhost:58881/irishealth-latest-cd/api/monitor/metrics)
+* [IRIS PREVIEW METRICS](http://localhost:58881/irishealth-latest-preview/api/monitor/metrics)
 ### LICENSES
-* [License Key EM](http://localhost:58880/irishealth-latest-em/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
-* [License Key CD](http://localhost:58880/irishealth-latest-cd/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
-* [License Key PREVIEW](http://localhost:58880/irishealth-latest-preview/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
+* [License Key EM](http://localhost:58881/irishealth-latest-em/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
+* [License Key CD](http://localhost:58881/irishealth-latest-cd/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
+* [License Key PREVIEW](http://localhost:58881/irishealth-latest-preview/csp/sys/mgr/%25CSP.UI.Portal.License.Key.zen)
 ### Management Portal
-* [Management Portal EM](http://localhost:58880/irishealth-latest-em/csp/sys/UtilHome.csp)
-* [Management Portal CD](http://localhost:58880/irishealth-latest-cd/csp/sys/UtilHome.csp)
-* [Management Portal PREVIEW](http://localhost:58880/irishealth-latest-preview/csp/sys/UtilHome.csp)
+* [Management Portal EM](http://localhost:58881/irishealth-latest-em/csp/sys/UtilHome.csp)
+* [Management Portal CD](http://localhost:58881/irishealth-latest-cd/csp/sys/UtilHome.csp)
+* [Management Portal PREVIEW](http://localhost:58881/irishealth-latest-preview/csp/sys/UtilHome.csp)
 
 
 ## Sources
