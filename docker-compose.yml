@@ -1,0 +1,55 @@
+version: '3.7'
+services:
+  iris-em:
+    image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
+    init: true
+    container_name: ${CONTAINER_IRIS_EM}
+    hostname: ${CONTAINER_IRIS_EM}
+    volumes:
+    - type: bind
+      source: ./IRIS
+      target: /IRIS
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    ports:
+      - 10004:1972
+
+  iris-cd:
+    image: ${IMAGE_IRIS_CD} # CONTINUOUS DELIVERY
+    init: true
+    container_name: ${CONTAINER_IRIS_CD}
+    hostname: ${CONTAINER_IRIS_CD}
+    volumes:
+    - type: bind
+      source: ./IRIS
+      target: /IRIS
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    ports:
+      - 10005:1972
+
+  iris-preview:
+    image: ${IMAGE_IRIS_PREVIEW} # DEVELOPER PREVIEW
+    init: true
+    container_name: ${CONTAINER_IRIS_PREVIEW}
+    hostname: ${CONTAINER_IRIS_PREVIEW}
+    volumes:
+    - type: bind
+      source: ./IRIS
+      target: /IRIS
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    ports:
+      - 10006:1972
+
+  webgateway:
+    image: ${WEBGATEWAY}
+    init: true
+    hostname: ${WEBGATEWAY_NAME}
+    ports:
+    - ${WEBGATEWAY_PORT_HTTP}:80
+    - ${WEBGATEWAY_PORT_HTTPS}:443
+    environment:
+    - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
+    - ISC_CSP_INI_FILE=/webgateway/CSP.ini
+    volumes:
+    - type: bind
+      source: ./webgateway
+      target: /webgateway
