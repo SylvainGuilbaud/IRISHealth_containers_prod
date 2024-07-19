@@ -1,0 +1,2 @@
+[Fri Jul 19 10:27:43.333164 2024] [mpm_worker:notice] [pid 1629:tid 281473018055040] AH00292: Apache/2.4.54 (Unix) OpenSSL/3.0.2 configured -- resuming normal operations
+[Fri Jul 19 10:27:43.334844 2024] [core:notice] [pid 1629:tid 281473018055040] AH00094: Command line: '/usr/irissys/httpd/bin/httpd -f /irisdata/httpd/conf/httpd.conf -d /usr/irissys/httpd -c Listen 52773'

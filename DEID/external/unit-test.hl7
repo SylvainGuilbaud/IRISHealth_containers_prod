@@ -1,0 +1,7 @@
+MSH|^~\&||HC6|||||ADT^A08|||2.5
+EVN|A08|20211207094500
+PID|||LD572046^^^HC6^MR||Smith^John||19301019|M|||1 Memorial Drive^^Cambridge^MA^02142||||||||063070516
+PV1||O|||||ISCGP001^Moore^James|||||||EO|||||HSVN00006|||||||||||||||||||||||||20211207094500|20211207094500
+AL1||Food|Choc^Chocolate|Sev^Severe - Danger of Choking|Sneeze|20150216
+DG1|||T2D^ Type 2 diabetes mellitus|Type 2 diabetes mellitus|202112070945|T2D||||||||||ISCGP001^Moore^James
+DG1|||DA^Dementia in Alzheimer's disease|Dementia in Alzheimer's disease|202112070945|DA||||||||||ISCGP001^Moore^James

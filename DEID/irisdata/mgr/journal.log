@@ -1,0 +1,6 @@
+Version=1.0
+Host=ipc-xid,/irisdata/mgr/
+Edition=1,1721384858,2024-07-19 10:27:38
+Base=0
+<EndOfHeader>
+,/irisdata/mgr/journal/20240719.001,1-7,E9A145CA-45BA-11EF-A973-0242AC180002,,2024-07-19 10:27:38,-1,6222
