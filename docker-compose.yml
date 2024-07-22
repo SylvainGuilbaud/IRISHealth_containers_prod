@@ -1,50 +1,63 @@
 services:
-  lorah:
-    build: 
-      context: ./LORAH
-      dockerfile: Dockerfile
+  iris-em:
+    image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
     init: true
-    container_name: ${LORAH}
-    hostname: ${LORAH}
+    container_name: ${CONTAINER_IRIS_EM}
+    hostname: ${CONTAINER_IRIS_EM}
     volumes:
+    - type: bind
+      source: ./IRIS
+      target: /IRIS
+    - "/etc/timezone:/etc/timezone:ro"
+    - "/etc/localtime:/etc/localtime:ro"
     - type: bind
       source: ./volumes
       target: /volumes
-    - type: bind
-      source: ./LORAH
-      target: /LORAH
-    - "/etc/timezone:/etc/timezone:ro"
-    - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - ISC_DATA_DIRECTORY=/volumes/IRIS/${LORAH}
-    # command: --key /IRIS/iris.key -a /IRIS/configure.sh
-    command: --key /LORAH/key/iris.key 
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
     ports:
-      - 10004:1972
+      - 11004:1972
+    environment:
+      - ISC_DATA_DIRECTORY=/volumes/${EXTENDED_MAINTENANCE}
 
-  oscar:
-    build: 
-      context: ./OSCAR
-      dockerfile: Dockerfile
+  iris-cd:
+    image: ${IMAGE_IRIS_CD} # CONTINUOUS DELIVERY
     init: true
-    container_name: ${OSCAR}
-    hostname: ${OSCAR}
+    container_name: ${CONTAINER_IRIS_CD}
+    hostname: ${CONTAINER_IRIS_CD}
     volumes:
+    - type: bind
+      source: ./IRIS
+      target: /IRIS
+    - "/etc/timezone:/etc/timezone:ro"
+    - "/etc/localtime:/etc/localtime:ro"
     - type: bind
       source: ./volumes
       target: /volumes
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    ports:
+      - 11005:1972
+    environment:
+      - ISC_DATA_DIRECTORY=/volumes/${CONTINUOUS_DELIVERY}
+
+  iris-preview:
+    image: ${IMAGE_IRIS_PREVIEW} # DEVELOPER PREVIEW
+    init: true
+    container_name: ${CONTAINER_IRIS_PREVIEW}
+    hostname: ${CONTAINER_IRIS_PREVIEW}
+    volumes:
     - type: bind
-      source: ./OSCAR
-      target: /OSCAR
+      source: ./IRIS
+      target: /IRIS
     - "/etc/timezone:/etc/timezone:ro"
     - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - ISC_DATA_DIRECTORY=/volumes/IRIS/${OSCAR}
-      - TINI_SUBREAPER=1  
-    # command: --key /IRIS/iris.key -a /IRIS/configure.sh
-    command: --key /OSCAR/key/iris.key 
+    - type: bind
+      source: ./volumes
+      target: /volumes
+    command: --key /IRIS/iris.key -a /IRIS/configure.sh
     ports:
-      - 10005:1972
+      - 11006:1972
+    environment:
+      - ISC_DATA_DIRECTORY=/volumes/${DEVELOPER_PREVIEW}
 
   webgateway:
     image: ${WEBGATEWAY}
@@ -60,48 +73,3 @@ services:
     - type: bind
       source: ./webgateway
       target: /webgateway
-  xid:
-    image: intersystems/evaluation/health-data-deid:latest
-    init: true
-    hostname: ipc-xid
-    container_name: ipc-xid
-    restart: "no"
-    environment:
-      - ISC_DATA_DIRECTORY=/irisdata
-    ports:
-      - "10006:1972"         # [host:container] Default InterSystems IRIS superserver port; can be changed as needed.
-      - "10007:52773"       # [host:container] Default InterSystems IRIS web port; can be changed as needed.
-      - "10008:9901"         # [host:container] HL7 Inbound TCP port; can be changed as needed.
-    volumes:
-    - type: bind
-      source: ./DEID/external/XID        # Where the XSLT file resides on the host, changing the file will affect the container.
-      target: /tmp/xid/data/xslt/SDA3/XID   # [INTERNAL - DO NOT CHANGE]
-    - type: bind
-      source: ./DEID/external/SDAIn      # SDA file inbound on the host; can be changed as needed.
-      target: /tmp/xid/data/SDAIn           # [INTERNAL - DO NOT CHANGE]
-    - type: bind
-      source: ./DEID/external/HL7In      # HL7 file inbound on the host; can be changed as needed.
-      target: /tmp/xid/data/HL7In           # [INTERNAL - DO NOT CHANGE]
-    - type: bind
-      source: ./DEID/external/SDAOut     # SDA file outbound on the host; can be changed as needed.
-      target: /tmp/xid/data/SDAOut          # [INTERNAL - DO NOT CHANGE]
-    - type: bind
-      source: ./DEID/external/PRIn       # PR file inbound on the host; can be changed as needed.
-      target: /tmp/xid/data/PRIn            # [INTERNAL - DO NOT CHANGE]
-    - type: bind
-      source: ./DEID/external/PROut      # PR file outbound on the host; can be changed as needed.
-      target: /tmp/xid/data/PROut           # [INTERNAL - DO NOT CHANGE]
-    - ./DEID/irisdata:/irisdata
-  notebook:
-    container_name: ipc-notebook
-    # build: 
-    #   context: notebook
-    image: jupyter-notebook
-    ports:
-      - "10088:8888"
-    volumes:
-      - ./notebook/Notebooks:/Notebooks
-    command: "start-notebook.sh --NotebookApp.token='' --NotebookApp.password='' --notebook-dir=/Notebooks"
-    environment:
-      - IRISINSTALLDIR='/usr/irissys'
-  
