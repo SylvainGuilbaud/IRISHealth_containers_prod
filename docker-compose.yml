@@ -1,6 +1,10 @@
 services:
   iris-em:
-    image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
+    build:
+      context: ./IRIS/latest-em
+      args:
+        - IMAGE=${IMAGE_IRIS_EM}
+    # image: ${IMAGE_IRIS_EM} # EXTENDED MAINTENANCE
     init: true
     container_name: ${CONTAINER_IRIS_EM}
     hostname: ${CONTAINER_IRIS_EM}
@@ -13,14 +17,19 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    # command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11004:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${EXTENDED_MAINTENANCE}
 
   iris-cd:
-    image: ${IMAGE_IRIS_CD} # CONTINUOUS DELIVERY
+    build:
+      context: ./IRIS/latest-cd
+      args:
+        - IMAGE=${IMAGE_IRIS_CD}
+    # image: ${IMAGE_IRIS_CD} # CONTINUOUS DELIVERY
     init: true
     container_name: ${CONTAINER_IRIS_CD}
     hostname: ${CONTAINER_IRIS_CD}
@@ -33,14 +42,19 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    # command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11005:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${CONTINUOUS_DELIVERY}
 
   iris-preview:
-    image: ${IMAGE_IRIS_PREVIEW} # DEVELOPER PREVIEW
+    build:
+      context: ./IRIS/latest-preview
+      args:
+        - IMAGE=${IMAGE_IRIS_PREVIEW}
+    # image: ${IMAGE_IRIS_PREVIEW} # DEVELOPER PREVIEW
     init: true
     container_name: ${CONTAINER_IRIS_PREVIEW}
     hostname: ${CONTAINER_IRIS_PREVIEW}
@@ -53,7 +67,8 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure.sh
+    # command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11006:1972
     environment:
