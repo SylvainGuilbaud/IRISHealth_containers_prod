@@ -7,7 +7,6 @@
     zpm "install csvgen"
 
     zn "%SYS"
-    do ##class(%SYSTEM.CSP).SetConfig("CSPConfigName","$HOSTNAME")
 
     #; do ##class(Security.Users).UnExpireUserPasswords("*")
     do ##class(%SQL.Statement).%ExecDirect(,"update security.events set enabled=1")
