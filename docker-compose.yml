@@ -17,7 +17,7 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_default_password.sh
     # command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11004:1972
@@ -42,7 +42,7 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_default_password.sh
     # command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11005:1972
@@ -67,7 +67,7 @@ services:
     - type: bind
       source: ./volumes
       target: /volumes
-    command: --key /IRIS/iris.key -a /IRIS/configure_default_password.sh
+    command: --key /IRIS/key/iris.key -a /IRIS/configure_default_password.sh
     # command: --key /IRIS/key/iris.key -a /IRIS/configure_change_password.sh
     ports:
       - 11006:1972
