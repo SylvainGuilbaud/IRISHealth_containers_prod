@@ -4,4 +4,4 @@ django-iris
 llama-iris
 dbt-iris
 irissqlcli
-venv-iris
+# venv-iris
