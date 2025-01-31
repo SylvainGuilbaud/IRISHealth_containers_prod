@@ -84,6 +84,7 @@ services:
     environment:
     - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
     - ISC_CSP_INI_FILE=/webgateway/CSP.ini
+    - TZ=Europe/Paris
     volumes:
     - type: bind
       source: ./webgateway
