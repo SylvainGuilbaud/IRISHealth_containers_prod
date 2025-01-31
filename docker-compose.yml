@@ -22,6 +22,7 @@ services:
       - 11004:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${EXTENDED_MAINTENANCE}
+      - ISC_CPF_MERGE_FILE=/IRIS/merge.cpf
       # - TZ=Europe/Paris
 
   iris-cd:
@@ -47,6 +48,7 @@ services:
       - 11005:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${CONTINUOUS_DELIVERY}
+      - ISC_CPF_MERGE_FILE=/IRIS/merge.cpf
       - TZ=Europe/Paris
 
   iris-preview:
@@ -72,6 +74,7 @@ services:
       - 11006:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${DEVELOPER_PREVIEW}
+      - ISC_CPF_MERGE_FILE=/IRIS/merge.cpf
       - TZ=Europe/Paris
 
   webgateway:
