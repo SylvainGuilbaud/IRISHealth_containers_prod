@@ -12,8 +12,8 @@ services:
     - type: bind
       source: ./IRIS
       target: /IRIS
-    - "/etc/timezone:/etc/timezone:ro"
-    - "/etc/localtime:/etc/localtime:ro"
+    # - "/etc/timezone:/etc/timezone:ro"
+    # - "/etc/localtime:/etc/localtime:ro"
     - type: bind
       source: ./volumes
       target: /volumes
@@ -23,6 +23,7 @@ services:
       - 11004:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${EXTENDED_MAINTENANCE}
+      - TZ=Europe/Paris
 
   iris-cd:
     build:
@@ -37,8 +38,8 @@ services:
     - type: bind
       source: ./IRIS
       target: /IRIS
-    - "/etc/timezone:/etc/timezone:ro"
-    - "/etc/localtime:/etc/localtime:ro"
+    # - "/etc/timezone:/etc/timezone:ro"
+    # - "/etc/localtime:/etc/localtime:ro"
     - type: bind
       source: ./volumes
       target: /volumes
@@ -48,6 +49,7 @@ services:
       - 11005:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${CONTINUOUS_DELIVERY}
+      - TZ=Europe/Paris
 
   iris-preview:
     build:
@@ -62,8 +64,8 @@ services:
     - type: bind
       source: ./IRIS
       target: /IRIS
-    - "/etc/timezone:/etc/timezone:ro"
-    - "/etc/localtime:/etc/localtime:ro"
+    # - "/etc/timezone:/etc/timezone:ro"
+    # - "/etc/localtime:/etc/localtime:ro"
     - type: bind
       source: ./volumes
       target: /volumes
@@ -73,6 +75,7 @@ services:
       - 11006:1972
     environment:
       - ISC_DATA_DIRECTORY=/volumes/${DEVELOPER_PREVIEW}
+      - TZ=Europe/Paris
 
   webgateway:
     image: ${WEBGATEWAY}
@@ -84,7 +87,6 @@ services:
     environment:
     - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
     - ISC_CSP_INI_FILE=/webgateway/CSP.ini
-    - TZ=Europe/Paris
     volumes:
     - type: bind
       source: ./webgateway
