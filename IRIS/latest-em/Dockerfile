@@ -23,7 +23,7 @@ ENV IRISNAMESPACE=USER
 COPY key/iris.key /usr/irissys/mgr/iris.key
 
 RUN --mount=type=bind,src=.,dst=. \
-    pip3 install -r requirements.txt && \
+    # pip3 install -r requirements.txt && \
     iris start IRIS && \
     iris merge IRIS merge.cpf && \
 	iris session IRIS < iris.script && \
