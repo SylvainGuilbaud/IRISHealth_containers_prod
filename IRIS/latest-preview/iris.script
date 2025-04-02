@@ -13,33 +13,5 @@
     #; do ##class(Security.Users).UnExpireUserPasswords("*")
     do ##class(%SQL.Statement).%ExecDirect(,"update security.events set enabled=1")
 
-    set crud("NameSpace") = "OSCAR"
-    set crud("DispatchClass") = "OSCAR.REST"
-    set crud("CookiePath") = "/crud/"
-    set crud("Description") = "CRUD REST API"
-    set crud("MatchRoles") = ":%All"
-    set crud("AutheEnabled") = 96
-    set crud("IsNameSpaceDefault") = 0
-    set tSC = ##class(Security.Applications).Create("/crud", .crud)
-
-    zn "OSCAR"
-
-    #; common
-    do $system.OBJ.Load("/home/irisowner/dev/src/inc/common.inc","ck")
-
-    set sc = $SYSTEM.OBJ.LoadDir("/home/irisowner/dev/src","ck",,1)
-
-    do ##class(Ens.Util.Statistics).EnableSAMForNamespace()
-    do ##class(Ens.Util.Statistics).EnableStatsForProduction()
-
-    do ##class(%File).CopyFile("/home/irisowner/dev/fhirPortal/myFHIR.js","/usr/irissys/csp/fhir/portal/resources/js/myFHIR.js")
-
-    do ##class(%File).CopyFile("/home/irisowner/dev/swagger-ui/index.html","/usr/irissys/csp/swagger-ui/index.html")
-    
-    Set ^Ens.Debug("UtilEnsMessages","sql")=1
-
-    do ##class(FHIR.utils).install("OSCAR")
-
-    do ##class(Ens.Director).SetAutoStart("OSCAR.production",0)
 
     halt
